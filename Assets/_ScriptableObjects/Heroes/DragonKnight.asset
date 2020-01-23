@@ -15,8 +15,8 @@ MonoBehaviour:
   nick: Dragon Knight
   handDamageAtStart: 50
   handDamage: 50
-  moveSpeedAtStart: 6
-  moveSpeed: 6
+  moveSpeedAtStart: 5
+  moveSpeed: 5
   attackRateOnStart: 1
   attackRate: 1
-  rotateSpeed: 10
+  rotateSpeed: 15

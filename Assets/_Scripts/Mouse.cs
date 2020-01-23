@@ -7,6 +7,7 @@ public class Mouse : MonoBehaviour
     [SerializeField] private LayerMask _selectableMask;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private CameraMovement _camMovement;
+    [SerializeField] private TargetContainer _targetContainer;
 
     private Vector3 _movePoint;
 
@@ -32,9 +33,9 @@ public class Mouse : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 _movePoint = hit.point;
-                if (_camMovement.Target != null)
+                if (_targetContainer.Target != null)
                 {
-                    _camMovement.Target.GetComponent<IMovable>().Move(_movePoint);
+                    _targetContainer.Target.GetComponent<IMovable>().Move(_movePoint);
                 }
             }
         }

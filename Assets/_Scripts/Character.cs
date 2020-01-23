@@ -5,14 +5,14 @@ public class Character : MonoBehaviour, IMovable, ITarget
     [Header("Data")]
     [SerializeField] private CharacterData _data;
 
-    public Vector3 MoveVector { get; set; }
+    public Vector3 MoveVector;
 
     [Header("Components")]
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Animator _animator;
 
     [Header("Linqs")]
-    public CameraMovement _cameraMovement;
+    public TargetContainer targetContainer;
 
     private void Start()
     {
@@ -23,7 +23,6 @@ public class Character : MonoBehaviour, IMovable, ITarget
     private void FixedUpdate()
     {
         Move(MoveVector);
-        Rotate(MoveVector);
     }
 
     public void Death()
@@ -33,28 +32,26 @@ public class Character : MonoBehaviour, IMovable, ITarget
 
     public void Move(Vector3 movePos)
     {
-        if (_cameraMovement.Target == null || _cameraMovement.Target != gameObject)
+        if (targetContainer.Target == null || targetContainer.Target != gameObject) 
         {
             return;
         }
-        MoveVector = movePos;
+        MoveVector.Set(movePos.x, transform.position.y, movePos.z);
         transform.position = Vector3.MoveTowards(transform.position, MoveVector, Time.deltaTime * _data.moveSpeed);
         if (transform.position == MoveVector)
         {
-            _animator.SetTrigger("idle");
+            _animator.SetBool("idle", true);
         }
         else
         {
-            _animator.SetTrigger("walk");
+            _animator.SetBool("idle", false);
+            _animator.speed = _data.moveSpeed / 3;
+            Rotate(MoveVector);
         }
     }
 
     public void Rotate(Vector3 pos)
-    {
-        if (_cameraMovement.Target == null || _cameraMovement.Target != gameObject)
-        {
-            return;
-        }
+    { 
         Vector3 lookPos = pos- transform.position;
         Quaternion lookRot = Quaternion.LookRotation(lookPos, Vector3.up);
         float eulerY = lookRot.eulerAngles.y;
@@ -69,7 +66,7 @@ public class Character : MonoBehaviour, IMovable, ITarget
 
     public void Select()
     {
-        _cameraMovement.Target = gameObject;
+        targetContainer.Target = gameObject;
     }
 
     public void StopMotion()
