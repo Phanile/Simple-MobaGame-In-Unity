@@ -25,7 +25,10 @@ public class Mouse : MonoBehaviour
         {
             var target = hit.transform.GetComponent<ITarget>();
             if (target != null)
-            AimTarget(target);
+            {
+                AimTarget(target);
+                return;
+            }
         }
 
         if (Physics.Raycast(ray, out hit, _distance, _groundMask))
@@ -36,6 +39,7 @@ public class Mouse : MonoBehaviour
                 if (_targetContainer.Target != null)
                 {
                     _targetContainer.Target.GetComponent<IMovable>().Move(_movePoint);
+                    _targetContainer.Target.GetComponent<IMovable>().Rotate(_movePoint);
                 }
             }
         }
@@ -45,8 +49,33 @@ public class Mouse : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            target.Select();
-            return;
+             target.Select();
+             return; 
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (_targetContainer.Enemy == null && target.transform.CompareTag("Enemy"))
+            {
+                _targetContainer.Enemy = target.transform.gameObject;
+            }
+            if (_targetContainer.Enemy != null && _targetContainer.Enemy.GetComponent<ITarget>() == target)
+            {
+                if (_targetContainer.Target == null)
+                {
+                    return;
+                }
+                else
+                {
+                    if (_targetContainer.Target.GetComponent<ITarget>().TryToHitTarget(target))
+                    {
+                        _targetContainer.Target.GetComponent<ITarget>().Attack(target);
+                    }
+                    else
+                    {
+                        _targetContainer.Target.GetComponent<IMovable>().StartMoveToTarget(_targetContainer.Enemy.GetComponent<ITarget>());
+                    }
+                }
+            }
         }
         target.OnAimAtTarget();
     }
