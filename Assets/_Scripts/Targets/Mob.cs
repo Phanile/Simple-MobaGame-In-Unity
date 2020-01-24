@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour, IMovable, ITarget
 {
+    public TargetContainer targetContainer;
+
     public void Attack(ITarget target)
     {
         
@@ -11,6 +13,11 @@ public class Mob : MonoBehaviour, IMovable, ITarget
     public void Death()
     {
         
+    }
+
+    public void DeSelect()
+    {
+        targetContainer.DeselectTarget(this);
     }
 
     public void Move(Vector3 movePos)
@@ -35,7 +42,7 @@ public class Mob : MonoBehaviour, IMovable, ITarget
 
     public void Select()
     {
-        
+        targetContainer.SelectTarget(this);
     }
 
     public void StartMoveToTarget(ITarget target)

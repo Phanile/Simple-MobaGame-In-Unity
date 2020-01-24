@@ -54,7 +54,7 @@ public class Mouse : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            if (_targetContainer.Enemy == null && target.transform.CompareTag("Enemy"))
+            if (target.transform.CompareTag("Enemy"))
             {
                 _targetContainer.Enemy = target.transform.gameObject;
             }

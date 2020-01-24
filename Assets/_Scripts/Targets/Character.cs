@@ -84,6 +84,7 @@ public class Character : MonoBehaviour, IMovable, ITarget
     public void Select()
     {
         targetContainer.Target = gameObject;
+        targetContainer.SelectTarget(this);
     }
 
     public void StopMotion()
@@ -130,21 +131,25 @@ public class Character : MonoBehaviour, IMovable, ITarget
 
     public IEnumerator MoveForAttack(ITarget target)
     {
-        Vector3 previousVect = target.transform.position;
+        moveVector = target.transform.position;
         while (!TryToHitTarget(target))
         {
-            moveVector = target.transform.position;
             yield return new WaitForEndOfFrame();
-        }
-        if (TryToHitTarget(target))
-        {
-            Attack(target);
-            yield break;
+            if (TryToHitTarget(target))
+            {
+                Attack(target);
+                yield break;
+            }
         }
     }
 
     public void StartMoveToTarget(ITarget target)
     {
         StartCoroutine(MoveForAttack(target));
+    }
+
+    public void DeSelect()
+    {
+        targetContainer.DeselectTarget(this);
     }
 }

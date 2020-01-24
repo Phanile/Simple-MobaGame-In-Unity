@@ -73,6 +73,7 @@
     <Compile Include="Assets\_Scripts\Targets\ITarget.cs" />
     <Compile Include="Assets\_Scripts\Targets\Mob.cs" />
     <Compile Include="Assets\_Scripts\Targets\TargetContainer.cs" />
+    <Compile Include="Assets\_Scripts\Targets\TargetLine.cs" />
     <None Include="Assets\_Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\_Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\_Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
