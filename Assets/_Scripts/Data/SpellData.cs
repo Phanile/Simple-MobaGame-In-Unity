@@ -122,9 +122,14 @@ public class SpellData : ScriptableObject
         }
     }
 
-    public void SpellUse(ITarget target)
+    public void SpellUseOn(ITarget target)
     {
-        Instantiate(spell, target.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        Instantiate(spell, target.transform.position + new Vector3(0, 0.5f, 0), spell.transform.rotation);
+    }
+
+    public void SpellUseTo(Vector3 pos)
+    {
+        Instantiate(spell, pos + new Vector3(0, 0.5f, 0), spell.transform.rotation);
     }
 }
 

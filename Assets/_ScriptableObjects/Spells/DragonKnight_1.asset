@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6afc4898a8e85f249b059f82ab75944b, type: 3}
   m_Name: DragonKnight_1
   m_EditorClassIdentifier: 
-  onSpellUse:
-    m_PersistentCalls:
-      m_Calls: []
   onSpellUp:
     m_PersistentCalls:
       m_Calls:

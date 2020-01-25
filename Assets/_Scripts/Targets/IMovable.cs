@@ -9,5 +9,7 @@ public interface IMovable
     IEnumerator MoveForUseSpell(ITarget target, SpellData data);
     void StartMoveToTarget(ITarget target);
     void StartMoveToUseSpeellOnTarget(ITarget target, SpellData data);
+    void StartMoveToUseSpeellTo(Vector3 pos, SpellData data);
+    IEnumerator MoveForTo(Vector3 pos, SpellData data);
     void StopMotion();
 }

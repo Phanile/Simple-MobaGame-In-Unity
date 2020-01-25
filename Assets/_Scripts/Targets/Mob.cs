@@ -30,6 +30,11 @@ public class Mob : MonoBehaviour, IMovable, ITarget
         throw new System.NotImplementedException();
     }
 
+    public IEnumerator MoveForTo(Vector3 pos, SpellData data)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public IEnumerator MoveForUseSpell(ITarget target)
     {
         throw new System.NotImplementedException();
@@ -66,6 +71,11 @@ public class Mob : MonoBehaviour, IMovable, ITarget
     }
 
     public void StartMoveToUseSpeellOnTarget(ITarget target, SpellData data)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void StartMoveToUseSpeellTo(Vector3 pos, SpellData data)
     {
         throw new System.NotImplementedException();
     }

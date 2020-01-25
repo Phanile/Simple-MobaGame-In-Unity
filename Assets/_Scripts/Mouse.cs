@@ -53,6 +53,32 @@ public class Mouse : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, _distance, _groundMask))
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (_state == MouseState.spellUses)
+                {
+                    _movePoint = hit.point;
+                    if (_targetContainer.Target != null)
+                    {
+                        if (data.activeSpellType == ActiveSpellType.notAiming)
+                        {
+                            if (_targetContainer.Target.CompareTag("Player"))
+                            {
+                                if (_targetContainer.Target.GetComponent<ISpellUser>().TryToUseSpellTo(_movePoint, data))
+                                {
+                                    _targetContainer.Target.GetComponent<ISpellUser>().UseSpellTo(_movePoint, data);
+                                    AfterSpellEndClick();
+                                }
+                                else
+                                {
+                                    _targetContainer.Target.GetComponent<IMovable>().StartMoveToUseSpeellTo(_movePoint, data);
+                                    AfterSpellEndClick();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             if (Input.GetMouseButtonDown(1))
             {
                 if (_state == MouseState.normal)
@@ -84,19 +110,22 @@ public class Mouse : MonoBehaviour
             }
             if (_state == MouseState.spellUses)
             {
-                if (_targetContainer.Target != null)
+                if (data.activeSpellType == ActiveSpellType.aiming)
                 {
-                    if (_targetContainer.Target.CompareTag("Player"))
+                    if (_targetContainer.Target != null)
                     {
-                        if (_targetContainer.Target.GetComponent<ISpellUser>().TryToUseSpellOnTarget(target, data))
+                        if (_targetContainer.Target.CompareTag("Player"))
                         {
-                            _targetContainer.Target.GetComponent<ISpellUser>().UseSpellOn(target, data);
-                            AfterSpellEndClick();
-                        }
-                        else
-                        {
-                            _targetContainer.Target.GetComponent<IMovable>().StartMoveToUseSpeellOnTarget(target, data);
-                            AfterSpellEndClick();
+                            if (_targetContainer.Target.GetComponent<ISpellUser>().TryToUseSpellOnTarget(target, data))
+                            {
+                                _targetContainer.Target.GetComponent<ISpellUser>().UseSpellOn(target, data);
+                                AfterSpellEndClick();
+                            }
+                            else
+                            {
+                                _targetContainer.Target.GetComponent<IMovable>().StartMoveToUseSpeellOnTarget(target, data);
+                                AfterSpellEndClick();
+                            }
                         }
                     }
                 }

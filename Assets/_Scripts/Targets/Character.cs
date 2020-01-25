@@ -30,12 +30,12 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
 
     public void Death()
     {
-        
+
     }
 
     public void Move(Vector3 movePos)
     {
-        if (targetContainer.Target == null) 
+        if (targetContainer.Target == null)
         {
             return;
         }
@@ -76,9 +76,18 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
         return rotation;
     }
 
+    public Quaternion GetRotateBeforeUseSpellTo(Vector3 target)
+    {
+        Vector3 lookPos = target - transform.position;
+        Quaternion lookRot = Quaternion.LookRotation(lookPos, Vector3.up);
+        float eulerY = lookRot.eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0, eulerY, 0);
+        return rotation;
+    }
+
     public void OnAimAtTarget()
     {
-        
+
     }
 
     public void Select()
@@ -88,12 +97,12 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
 
     public void StopMotion()
     {
-        moveVector = transform.position;  
+        moveVector = transform.position;
     }
 
     public void TakeDamage(int damage)
     {
-     
+
     }
 
     public CharacterData GetData()
@@ -196,11 +205,41 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
     {
         StopMotion();
         transform.rotation = GetRotateBeforeAttack(target);
-        data.SpellUse(target);
+        data.SpellUseOn(target);
     }
 
-    public void UseSpellTo(Vector3 pos)
+    public void UseSpellTo(Vector3 pos, SpellData data)
     {
-        
+        StopMotion();
+        transform.rotation = GetRotateBeforeUseSpellTo(pos);
+        data.SpellUseTo(pos);
+    }
+
+    public bool TryToUseSpellTo(Vector3 pos, SpellData data)
+    {
+        if (Vector3.Distance(transform.position, pos) <= data.range)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void StartMoveToUseSpeellTo(Vector3 pos, SpellData data)
+    {
+        StartCoroutine(MoveForTo(pos, data));
+    }
+
+    public IEnumerator MoveForTo(Vector3 pos, SpellData data)
+    {
+        moveVector = pos;
+        while (!TryToUseSpellTo(pos, data))
+        {
+            yield return new WaitForEndOfFrame();
+            if (TryToUseSpellTo(pos, data))
+            {
+                UseSpellTo(pos, data);
+                yield break;
+            }
+        }
     }
 }
