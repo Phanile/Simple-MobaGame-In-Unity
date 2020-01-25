@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afc4898a8e85f249b059f82ab75944b, type: 3}
+  m_Name: DragonKnight_1
+  m_EditorClassIdentifier: 
+  onSpellUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onSpellUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000}
+        m_MethodName: DecreaseCooldown
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000}
+        m_MethodName: IncreaseDamage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 50
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000}
+        m_MethodName: DecreaseManacost
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000}
+        m_MethodName: Up
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spellIcon: {fileID: 0}
+  keyCode: 113
+  type: 1
+  activeSpellType: 1
+  damageAtStart: 100
+  damage: 100
+  speed: 0
+  range: 4
+  manaCostAtStart: 10
+  manaCost: 10
+  coolDownAtStart: 5
+  coolDown: 5
+  levelOfSpell: 0
+  maxLevelOfSpell: 4
+  spell: {fileID: 2139031503104747922, guid: ceb148afb4fa4404299f073e7e5ef6b3, type: 3}

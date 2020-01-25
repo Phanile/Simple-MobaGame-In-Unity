@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 7618020204121863889}
   - component: {fileID: 7618020204121863888}
   - component: {fileID: 7618020204121863895}
+  - component: {fileID: 1815782467990009521}
   m_Layer: 0
   m_Name: SpellButton
   m_TagString: Untagged
@@ -369,8 +370,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f126324fd2486a641842ea5a8244c2d1, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 2467d7ca2b6b6b84e84eb524a57f5b01, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -422,6 +423,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1815782467990009521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618020204121863893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82e87bb8175858409d255e0ef0cb73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellIcon: {fileID: 0}
+  manacostBG: {fileID: 8139706652332858797}
+  keycodeBG: {fileID: 5901667248244258267}
+  manacostText: {fileID: 834846199276796149}
+  keycodeText: {fileID: 3654851667593178740}
+  data: {fileID: 11400000, guid: 12316c3919e6b194fb4e85aa169453c8, type: 2}
 --- !u!1 &7720808241571369577
 GameObject:
   m_ObjectHideFlags: 0

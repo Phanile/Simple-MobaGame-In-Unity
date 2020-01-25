@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IMovable, ITarget
+public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
 {
     [Header("Data")]
     [SerializeField] private CharacterData _data;
 
     [Header("Vectors")]
-    public Vector3 moveVector;
+    [HideInInspector] public Vector3 moveVector;
 
     [Header("Components")]
     [SerializeField] private Rigidbody _rb;
@@ -35,7 +35,7 @@ public class Character : MonoBehaviour, IMovable, ITarget
 
     public void Move(Vector3 movePos)
     {
-        if (targetContainer.Target == null || targetContainer.Target != gameObject) 
+        if (targetContainer.Target == null) 
         {
             return;
         }
@@ -84,7 +84,6 @@ public class Character : MonoBehaviour, IMovable, ITarget
     public void Select()
     {
         targetContainer.Target = gameObject;
-        targetContainer.SelectTarget(this);
     }
 
     public void StopMotion()
@@ -95,6 +94,11 @@ public class Character : MonoBehaviour, IMovable, ITarget
     public void TakeDamage(int damage)
     {
      
+    }
+
+    public CharacterData GetData()
+    {
+        return _data;
     }
 
     public bool TryToHitTarget(ITarget target)
@@ -116,10 +120,31 @@ public class Character : MonoBehaviour, IMovable, ITarget
         return false;
     }
 
+    public bool TryToUseSpellOnTarget(ITarget target, SpellData data)
+    {
+        if (Physics.OverlapSphere(transform.position, data.range).Length > 0)
+        {
+            Collider[] cols = Physics.OverlapSphere(transform.position, data.range);
+            for (int i = 0; i < cols.Length; i++)
+            {
+                if (cols[i].transform.GetComponent<ITarget>() != null)
+                {
+                    if (cols[i].transform.GetComponent<ITarget>() == target)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _data.attackRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 4f);
     }
 
     public void Attack(ITarget target)
@@ -148,8 +173,34 @@ public class Character : MonoBehaviour, IMovable, ITarget
         StartCoroutine(MoveForAttack(target));
     }
 
-    public void DeSelect()
+    public IEnumerator MoveForUseSpell(ITarget target, SpellData data)
     {
-        targetContainer.DeselectTarget(this);
+        moveVector = target.transform.position;
+        while (!TryToUseSpellOnTarget(target, data))
+        {
+            yield return new WaitForEndOfFrame();
+            if (TryToUseSpellOnTarget(target, data))
+            {
+                UseSpellOn(target, data);
+                yield break;
+            }
+        }
+    }
+
+    public void StartMoveToUseSpeellOnTarget(ITarget target, SpellData data)
+    {
+        StartCoroutine(MoveForUseSpell(target, data));
+    }
+
+    public void UseSpellOn(ITarget target, SpellData data)
+    {
+        StopMotion();
+        transform.rotation = GetRotateBeforeAttack(target);
+        data.SpellUse(target);
+    }
+
+    public void UseSpellTo(Vector3 pos)
+    {
+        
     }
 }

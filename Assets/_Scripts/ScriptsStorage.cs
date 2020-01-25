@@ -8,6 +8,7 @@ public class ScriptsStorage : MonoBehaviour
     public CameraMovement cameraMovement;
     public ButtonsUser buttonsUser;
     public TargetContainer targetContainer;
+    public TargetSelector targetSelector;
 
     private void Awake()
     {

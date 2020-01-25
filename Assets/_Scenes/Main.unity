@@ -1202,6 +1202,7 @@ GameObject:
   - component: {fileID: 194996701}
   - component: {fileID: 194996703}
   - component: {fileID: 194996702}
+  - component: {fileID: 194996704}
   m_Layer: 0
   m_Name: '[Controllers]'
   m_TagString: Untagged
@@ -1238,6 +1239,7 @@ MonoBehaviour:
   cameraMovement: {fileID: 963194230}
   buttonsUser: {fileID: 194996703}
   targetContainer: {fileID: 194996702}
+  targetSelector: {fileID: 194996704}
 --- !u!114 &194996702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,7 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e2415e5a01019418ce160f4466f363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _material: {fileID: 2100000, guid: e90bc6506e3afcf4393363cad9c1057d, type: 2}
+  _targetSelector: {fileID: 194996704}
 --- !u!114 &194996703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1266,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 1810717674}
+  _buttons: []
+  _datas:
+  - {fileID: 11400000, guid: 0ac586358cef0914db75f882eb355aac, type: 2}
+  - {fileID: 11400000, guid: 12316c3919e6b194fb4e85aa169453c8, type: 2}
+--- !u!114 &194996704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194996699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedb61b5afb821047b6f87605db2a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetContainer: {fileID: 194996702}
+  _material: {fileID: 2100000, guid: e90bc6506e3afcf4393363cad9c1057d, type: 2}
 --- !u!1 &398952696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,6 +2228,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1815782467990009521, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ac586358cef0914db75f882eb355aac,
+        type: 2}
     - target: {fileID: 3654851667593178740, guid: 6ac26d4df9e29054197e04e615b49a8e,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2338,6 +2364,42 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ac586358cef0914db75f882eb355aac,
+        type: 2}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickOnBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618020204121863895, guid: 6ac26d4df9e29054197e04e615b49a8e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ac26d4df9e29054197e04e615b49a8e, type: 3}
 --- !u!224 &960520664 stripped
@@ -2358,6 +2420,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
@@ -2444,6 +2507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distance: 1000
+  _state: 0
   _selectableMask:
     serializedVersion: 2
     m_Bits: 256
@@ -2452,6 +2516,10 @@ MonoBehaviour:
     m_Bits: 512
   _camMovement: {fileID: 963194230}
   _targetContainer: {fileID: 194996702}
+  _moveParticleSpawner: {fileID: 963194231}
+  _normal: {fileID: 2800000, guid: 87d28997275f30943a4bf1cdc156bb73, type: 3}
+  _spellUses: {fileID: 2800000, guid: 009bc0f57c177604a90b4697026d8c00, type: 3}
+  data: {fileID: 0}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,6 +2534,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _cameraRoot: {fileID: 1353447896}
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c85115d0318f64db2450bd262d1d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pref: {fileID: 2830833461523593589, guid: 63725415f0dc71e4886af1720ac2e55e, type: 3}
+  currentParticle: {fileID: 0}
+  _canSpawn: 1
+  _targetContainer: {fileID: 194996702}
 --- !u!1001 &1009611830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2513,12 +2597,6 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7618020204121863888, guid: 6ac26d4df9e29054197e04e615b49a8e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2f1eaeeaad36ee5469eff7ff158f37ba,
-        type: 3}
     - target: {fileID: 7618020204121863893, guid: 6ac26d4df9e29054197e04e615b49a8e,
         type: 3}
       propertyPath: m_Name
@@ -4302,7 +4380,7 @@ GameObject:
   - component: {fileID: 1810717674}
   m_Layer: 8
   m_Name: DragonKnight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4732,7 +4810,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 819
 --- !u!114 &1847392686
 MonoBehaviour:
   m_ObjectHideFlags: 0

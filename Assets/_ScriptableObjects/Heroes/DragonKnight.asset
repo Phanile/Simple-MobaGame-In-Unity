@@ -21,7 +21,7 @@ MonoBehaviour:
   attackRate: 1
   attackRadius: 1.2
   rotateSpeed: 15
-  manaAtStart: 0
-  mana: 0
-  healthAtStart: 0
-  health: 0
+  manaAtStart: 100
+  mana: 100
+  healthAtStart: 500
+  health: 500

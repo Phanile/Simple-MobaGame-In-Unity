@@ -3,7 +3,6 @@
 public interface ITarget
 {
     void Select();
-    void DeSelect();
     void TakeDamage(int damage);
     void Death();
     void OnAimAtTarget();

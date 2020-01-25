@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "SpellData")]
 public class SpellData : ScriptableObject
 {
+    [Header("SpellEvents")]
+    public UnityEvent onSpellUp;
+
     [Header("UI")]
-    public UnityEngine.UI.Image spellIcon;
+    [SerializeField] public Image spellIcon;
+    public KeyCode keyCode;
 
     [Header("Types")]
     public SpellType type;
@@ -23,10 +30,102 @@ public class SpellData : ScriptableObject
     [Header("Stats")]
     public int manaCostAtStart;
     public int manaCost;
+
     public int coolDownAtStart;
     public int coolDown;
+
     public int levelOfSpell;
     public int maxLevelOfSpell;
+
+    [Header("Spell Prefab")]
+    public GameObject spell;
+
+    public void DecreaseCooldown(int value)
+    {
+        coolDown -= value;
+    }
+
+    public void DecreaseManacost(int value)
+    {
+        manaCost -= value;
+    }
+
+    public void IncreaseRange(int value)
+    {
+        range += value;
+    }
+
+    public void IncreaseDamage(int value)
+    {
+        damage += value;
+    }
+
+    public void UpSpell()
+    {
+        if (levelOfSpell + 1 <= maxLevelOfSpell)
+        {
+            onSpellUp?.Invoke();
+        }
+    }
+
+    public void Up()
+    {
+        levelOfSpell++;
+    }
+
+    public void StartCooldown()
+    {
+        
+    }
+
+    private IEnumerator Cooldown()
+    {
+        int time = 0;
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            time++;
+            if (time == coolDown)
+            {
+                yield break;
+            }
+        }
+    }
+
+    public bool TryToClickOnBottonForUse(int mana)
+    {
+        if (type == SpellType.passive)
+        {
+            return true;
+        }
+        if (type == SpellType.active)
+        {
+            if (manaCost <= mana)
+            {
+                return true;
+            }    
+        }
+        return false;
+    }
+
+    public void ClickOnBottom(int mana)
+    {
+        if (TryToClickOnBottonForUse(mana))
+        {
+            if (type == SpellType.passive)
+            {
+                return;
+            }
+            var mouse = FindObjectOfType<Mouse>();
+            mouse.SetData(this);
+            mouse.PrepareToUseActiveSkill();
+        }
+    }
+
+    public void SpellUse(ITarget target)
+    {
+        Instantiate(spell, target.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+    }
 }
 
 public enum SpellType

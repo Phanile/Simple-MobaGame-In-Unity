@@ -17,7 +17,7 @@ public class Mob : MonoBehaviour, IMovable, ITarget
 
     public void DeSelect()
     {
-        targetContainer.DeselectTarget(this);
+        
     }
 
     public void Move(Vector3 movePos)
@@ -26,6 +26,16 @@ public class Mob : MonoBehaviour, IMovable, ITarget
     }
 
     public IEnumerator MoveForAttack(ITarget target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public IEnumerator MoveForUseSpell(ITarget target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public IEnumerator MoveForUseSpell(ITarget target, SpellData data)
     {
         throw new System.NotImplementedException();
     }
@@ -42,10 +52,20 @@ public class Mob : MonoBehaviour, IMovable, ITarget
 
     public void Select()
     {
-        targetContainer.SelectTarget(this);
+        targetContainer.Target = gameObject;
     }
 
     public void StartMoveToTarget(ITarget target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void StartMoveToUseSpeellOnTarget(ITarget target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void StartMoveToUseSpeellOnTarget(ITarget target, SpellData data)
     {
         throw new System.NotImplementedException();
     }
