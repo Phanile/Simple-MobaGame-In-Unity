@@ -3,7 +3,15 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour, IMovable, ITarget
 {
+    [Header("Data")]
+    [SerializeField] private CreepData _data;
+
     public TargetContainer targetContainer;
+
+    private void Start()
+    {
+        _data.health = _data.maxHealth;
+    }
 
     public void Attack(ITarget target)
     {
@@ -87,7 +95,14 @@ public class Mob : MonoBehaviour, IMovable, ITarget
 
     public void TakeDamage(int damage)
     {
-        
+        if (_data.health > 0)
+        {
+            _data.health -= damage;
+            if (_data.health <= 0)
+            {
+
+            }
+        }
     }
 
     public bool TryToHitTarget(ITarget target)

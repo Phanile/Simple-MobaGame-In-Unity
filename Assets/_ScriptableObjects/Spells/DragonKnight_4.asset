@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afc4898a8e85f249b059f82ab75944b, type: 3}
+  m_Name: DragonKnight_4
+  m_EditorClassIdentifier: 
+  onSpellUp:
+    m_PersistentCalls:
+      m_Calls: []
+  spellIcon: {fileID: 21300000, guid: 42f6c722ead369b4b934a116b4324a4d, type: 3}
+  keyCode: 114
+  type: 1
+  activeSpellType: 2
+  damageAtStart: 0
+  damage: 0
+  speed: 0
+  range: 0
+  manaCostAtStart: 0
+  manaCost: 0
+  coolDownAtStart: 0
+  coolDown: 0
+  levelOfSpell: 0
+  maxLevelOfSpell: 0
+  spell: {fileID: 0}

@@ -59,14 +59,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  spellIcon: {fileID: 0}
+  spellIcon: {fileID: 21300000, guid: ee34195976181ef4b83f98f5034ab668, type: 3}
   keyCode: 113
   type: 1
-  activeSpellType: 1
+  activeSpellType: 0
   damageAtStart: 100
   damage: 100
   speed: 0
-  range: 4
+  range: 5
   manaCostAtStart: 10
   manaCost: 10
   coolDownAtStart: 5

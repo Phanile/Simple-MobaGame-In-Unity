@@ -76,6 +76,7 @@
     <Compile Include="Assets\_Scripts\ButtonsUser.cs" />
     <Compile Include="Assets\_Scripts\CameraMovement.cs" />
     <Compile Include="Assets\_Scripts\Data\CharacterData.cs" />
+    <Compile Include="Assets\_Scripts\Data\CreepData.cs" />
     <Compile Include="Assets\_Scripts\Data\SpellData.cs" />
     <Compile Include="Assets\_Scripts\Mouse.cs" />
     <Compile Include="Assets\_Scripts\MoveParticleSpawner.cs" />
@@ -89,8 +90,10 @@
     <Compile Include="Assets\_Scripts\Targets\TargetContainer.cs" />
     <Compile Include="Assets\_Scripts\Targets\TargetLine.cs" />
     <Compile Include="Assets\_Scripts\Targets\TargetSelector.cs" />
+    <Compile Include="Assets\_Scripts\UI\HealthBar.cs" />
     <Compile Include="Assets\_Scripts\UI\Spells\SpellActions.cs" />
     <Compile Include="Assets\_Scripts\UI\Spells\SpellPresenter.cs" />
+    <Compile Include="Assets\_Scripts\UI\StaticHealthBar.cs" />
     <None Include="Assets\_Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\_Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\_Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />

@@ -26,6 +26,8 @@ public class CharacterData : ScriptableObject
     [Header("Stats")]
     public int manaAtStart;
     public int mana;
+    public int maxMana;
     public int healthAtStart;
     public int health;
+    public int maxHealth;
 }

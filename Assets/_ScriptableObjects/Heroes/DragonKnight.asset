@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DragonKnight
   m_EditorClassIdentifier: 
   nick: Dragon Knight
-  handDamageAtStart: 50
-  handDamage: 50
+  handDamageAtStart: 40
+  handDamage: 40
   moveSpeedAtStart: 5
   moveSpeed: 5
   attackRateOnStart: 1
@@ -23,5 +23,7 @@ MonoBehaviour:
   rotateSpeed: 15
   manaAtStart: 100
   mana: 100
+  maxMana: 100
   healthAtStart: 500
   health: 500
+  maxHealth: 500

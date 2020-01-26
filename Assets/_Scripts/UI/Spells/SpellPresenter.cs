@@ -6,7 +6,7 @@ using TMPro;
 public class SpellPresenter : MonoBehaviour
 {
     [Header("Image")]
-    public Image spellIcon;
+    public Sprite spellIcon;
 
     [Header("BGs")]
     public Image manacostBG;
@@ -62,6 +62,7 @@ public class SpellPresenter : MonoBehaviour
             GetComponent<Button>().interactable = false;
         }
         spellIcon = data.spellIcon;
+        GetComponent<Image>().sprite = spellIcon;
         OnUpdate();
     }
 }

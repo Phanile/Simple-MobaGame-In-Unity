@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "SpellData")]
@@ -10,7 +9,7 @@ public class SpellData : ScriptableObject
     public UnityEvent onSpellUp;
 
     [Header("UI")]
-    [SerializeField] public Image spellIcon;
+    [SerializeField] public Sprite spellIcon;
     public KeyCode keyCode;
 
     [Header("Types")]
@@ -144,6 +143,5 @@ public enum ActiveSpellType
     aiming,
     notAiming,
     selfUse,
-    global
 }
 
