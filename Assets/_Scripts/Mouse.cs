@@ -110,12 +110,16 @@ public class Mouse : MonoBehaviour
             }
             if (_state == MouseState.spellUses)
             {
-                if (data.activeSpellType == ActiveSpellType.aiming)
+                if (data.activeSpellType != ActiveSpellType.selfUse)
                 {
                     if (_targetContainer.Target != null)
                     {
                         if (_targetContainer.Target.CompareTag("Player"))
                         {
+                            if (target.transform.gameObject.CompareTag("Player"))
+                            {
+                                return;
+                            }
                             if (_targetContainer.Target.GetComponent<ISpellUser>().TryToUseSpellOnTarget(target, data))
                             {
                                 _targetContainer.Target.GetComponent<ISpellUser>().UseSpellOn(target, data);

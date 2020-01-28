@@ -161,12 +161,14 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
         StopMotion();
         transform.rotation = GetRotateBeforeAttack(target);
         _animator.SetTrigger("attack");
-        StartCoroutine(AttackTarget(target, 0.2f));
+        StartCoroutine(AttackTarget(target, 0.2f, moveVector));
     }
 
-    private IEnumerator AttackTarget(ITarget target, float time)
+    private IEnumerator AttackTarget(ITarget target, float time, Vector3 vec)
     {
+        Vector3 lastVect = vec;
         yield return new WaitForSeconds(time);
+        if (moveVector == vec) 
         target.TakeDamage((int)_data.handDamage);
     }
 

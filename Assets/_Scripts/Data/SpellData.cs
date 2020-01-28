@@ -16,6 +16,9 @@ public class SpellData : ScriptableObject
     public SpellType type;
     public ActiveSpellType activeSpellType;
 
+    [Header("Stats")]
+    public bool onCooldown = false;
+
     [Header("Damage")]
     public int damageAtStart;
     public int damage;
@@ -79,12 +82,13 @@ public class SpellData : ScriptableObject
 
     private IEnumerator Cooldown()
     {
-        int time = 0;
+        onCooldown = true;
+        int time = coolDown;
         while (true)
         {
             yield return new WaitForSeconds(1);
-            time++;
-            if (time == coolDown)
+            time--;
+            if (time == 0)
             {
                 yield break;
             }
@@ -96,6 +100,10 @@ public class SpellData : ScriptableObject
         if (type == SpellType.passive)
         {
             return true;
+        }
+        if (onCooldown)
+        {
+            return false;
         }
         if (type == SpellType.active)
         {

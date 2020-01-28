@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: bb31dc35ec33bf642b0e9edb36acf191, type: 2}
   _fill: {fileID: 1467257163}
-  _fillSpeed: 10
+  _fillSpeed: 25
   currentHealth: 0
   maxHealth: 0
 --- !u!1 &185030131
@@ -6595,7 +6595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 399c54e1e423c5445a98d815c7c361ce, type: 2}
   _fill: {fileID: 1692561780}
-  _fillSpeed: 10
+  _fillSpeed: 25
   currentHealth: 0
   maxHealth: 0
 --- !u!1 &2103159743

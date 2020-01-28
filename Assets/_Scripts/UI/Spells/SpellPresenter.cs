@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using TMPro;
 
 public class SpellPresenter : MonoBehaviour
@@ -23,8 +22,6 @@ public class SpellPresenter : MonoBehaviour
     {
         Initialize();
     }
-
-    public event UnityAction onSpellUsed;
 
     public void SetManacostText(string value)
     {

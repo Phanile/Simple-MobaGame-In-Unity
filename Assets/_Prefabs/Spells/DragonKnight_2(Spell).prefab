@@ -4921,7 +4921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 03d17ff101f435048923c71a621d2e1a, type: 2}
   _haveTime: 1
-  _time: 0.4
+  _time: 0.47
 --- !u!135 &1046119750750126358
 SphereCollider:
   m_ObjectHideFlags: 0
