@@ -16,6 +16,9 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
     [Header("Linqs")]
     public TargetContainer targetContainer;
 
+    [Header("Other")]
+    [SerializeField] private bool _isAttack;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -158,6 +161,10 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
 
     public void Attack(ITarget target)
     {
+        if (_isAttack)
+        {
+            return;
+        }
         StopMotion();
         transform.rotation = GetRotateBeforeAttack(target);
         _animator.SetTrigger("attack");
@@ -166,10 +173,14 @@ public class Character : MonoBehaviour, IMovable, ITarget, ISpellUser
 
     private IEnumerator AttackTarget(ITarget target, float time, Vector3 vec)
     {
+        _isAttack = true;
         Vector3 lastVect = vec;
         yield return new WaitForSeconds(time);
-        if (moveVector == vec) 
-        target.TakeDamage((int)_data.handDamage);
+        if (moveVector == vec)
+        {
+            target.TakeDamage((int)_data.handDamage);
+        }
+        _isAttack = false;
     }
 
     public IEnumerator MoveForAttack(ITarget target)

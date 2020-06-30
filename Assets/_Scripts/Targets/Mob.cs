@@ -32,6 +32,10 @@ public class Mob : MonoBehaviour, IMovable, ITarget
     {
         
     }
+    public CreepData GetData()
+    {
+        return _data;
+    }
 
     public IEnumerator MoveForAttack(ITarget target)
     {

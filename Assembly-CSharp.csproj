@@ -82,6 +82,7 @@
     <Compile Include="Assets\_Scripts\MoveParticleSpawner.cs" />
     <Compile Include="Assets\_Scripts\ScriptsStorage.cs" />
     <Compile Include="Assets\_Scripts\SpellOnce.cs" />
+    <Compile Include="Assets\_Scripts\SpellRadius.cs" />
     <Compile Include="Assets\_Scripts\Targets\Character.cs" />
     <Compile Include="Assets\_Scripts\Targets\IMovable.cs" />
     <Compile Include="Assets\_Scripts\Targets\ISpellUser.cs" />

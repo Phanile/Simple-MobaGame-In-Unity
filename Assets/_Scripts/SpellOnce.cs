@@ -7,8 +7,18 @@ public class SpellOnce : MonoBehaviour
     [SerializeField] private SpellData _data;
 
     [Header("Settings")]
+    [SerializeField] private float _radius;
     [SerializeField] private bool _haveTime;
     [SerializeField] private float _time;
+
+
+    private SphereCollider _collider;
+
+    private void Start()
+    {
+        _collider = GetComponent<SphereCollider>();
+        _collider.radius = _radius;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {

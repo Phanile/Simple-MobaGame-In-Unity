@@ -39,6 +39,11 @@ public class SpellData : ScriptableObject
     public int levelOfSpell;
     public int maxLevelOfSpell;
 
+    [Header("Other")]
+    public int speedDecrease;
+    public float timeToDestroy;
+    public float timeToGiveDamage;
+
     [Header("Spell Prefab")]
     public GameObject spell;
 
@@ -73,11 +78,6 @@ public class SpellData : ScriptableObject
     public void Up()
     {
         levelOfSpell++;
-    }
-
-    public void StartCooldown()
-    {
-        
     }
 
     private IEnumerator Cooldown()
@@ -123,9 +123,17 @@ public class SpellData : ScriptableObject
             {
                 return;
             }
-            var mouse = FindObjectOfType<Mouse>();
-            mouse.SetData(this);
-            mouse.PrepareToUseActiveSkill();
+            if (activeSpellType != ActiveSpellType.selfUse)
+            {
+                var mouse = FindObjectOfType<Mouse>();
+                mouse.SetData(this);
+                mouse.PrepareToUseActiveSkill();
+            }
+            else
+            {
+                var player = FindObjectOfType<Character>();
+                UseSelfUsableSkill(player);
+            }
         }
     }
 
@@ -137,6 +145,12 @@ public class SpellData : ScriptableObject
     public void SpellUseTo(Vector3 pos)
     {
         Instantiate(spell, pos + new Vector3(0, 0.5f, 0), spell.transform.rotation);
+    }
+
+    public void UseSelfUsableSkill(Character character)
+    {
+        var _spell = Instantiate(spell, character.transform.position, spell.transform.rotation);
+        _spell.GetComponent<SpellRadius>().character = character;
     }
 }
 

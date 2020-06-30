@@ -21,6 +21,6 @@ MonoBehaviour:
   attackRate: 1
   attackRadius: 1
   rotateSpeed: 3
-  healthAtStart: 300
-  health: 300
-  maxHealth: 300
+  healthAtStart: 2000
+  health: 6760
+  maxHealth: 2000
